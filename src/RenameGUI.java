@@ -114,16 +114,16 @@ public class RenameGUI extends JFrame{
 		//Something to fill the right side and bottom
 		//emptyRight = new JPanel();
 		emptyBottom = new JPanel();
-	
+
 		//textScreen setup
 		textScreen = new JTextArea();
 		textScreen.setLineWrap(true);
 		textScreen.setEditable(false);
-		
+
 		//allows scrolling in textScreen
 		scroll = new JScrollPane(textScreen,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-	
+
 
 		//Sets the size and location of app on starup
 		setSize(700,500);
@@ -135,9 +135,9 @@ public class RenameGUI extends JFrame{
 
 		this.setJMenuBar(menuBar);
 		this.add(controlPanel, BorderLayout.NORTH);
-//		this.add(emptyBottom, BorderLayout.SOUTH);
+		//		this.add(emptyBottom, BorderLayout.SOUTH);
 		this.add(filesPanel, BorderLayout.WEST);
-//		this.add(textScreen, BorderLayout.CENTER);
+		//		this.add(textScreen, BorderLayout.CENTER);
 		this.add(scroll, BorderLayout.CENTER);
 		//this.add(empty, BorderLayout.SOUTH);
 
@@ -178,44 +178,47 @@ public class RenameGUI extends JFrame{
 				r.setExtension((String)exList.getSelectedItem());
 				//System.out.println((String)exList.getSelectedItem());
 			}
-//			else if(e.getSource() == newName) {
-//				r.setNewName(newName.getText());
-//				//Adds newName into the text screen
-//				textScreen.append("Setting new name to: " + r.getNewName() + 
-//						"\n========================================\n");
-//				//clears the newName box
-//				//newName.setText("");
-//			}
-//			else if (e.getSource() == number) {
-//				if(number.getText().length() > 0) {
-//					r.setCount(Integer.parseInt(number.getText()));
-//					textScreen.append("Setting starting number to: " + r.getCount() +
-//							"\n========================================\n");
-//				}
-//			}
+			//			else if(e.getSource() == newName) {
+			//				r.setNewName(newName.getText());
+			//				//Adds newName into the text screen
+			//				textScreen.append("Setting new name to: " + r.getNewName() + 
+			//						"\n========================================\n");
+			//				//clears the newName box
+			//				//newName.setText("");
+			//			}
+			//			else if (e.getSource() == number) {
+			//				if(number.getText().length() > 0) {
+			//					r.setCount(Integer.parseInt(number.getText()));
+			//					textScreen.append("Setting starting number to: " + r.getCount() +
+			//							"\n========================================\n");
+			//				}
+			//			}
 			else if(e.getSource() == start) {
-				//sets the count
-				if(number.getText().length() > 0) {
-					r.setCount(Integer.parseInt(number.getText()));
-				}
-				int count = r.getCount();
-				//sets new name
-				r.setNewName(newName.getText());
+				//				//sets the count
+				//				if(number.getText().length() > 0) {
+				//					r.setCount(Integer.parseInt(number.getText()));
+				//				}
+				//				int count = r.getCount();
+				//				//sets new name
+				//				r.setNewName(newName.getText());
 				//Rename if possible
 				try {
-					//Adds "Renaming Old File to New File" into the textscreen
-					for(File f:r.getList()) {
-						textScreen.append("Renaming " + f.getName() + " to " + r.getNewName() + 
-								" " + count + " " + r.getExtension() + "\n");
-						count++;
-					}
 					r.rename();
-					newName.setText("");
-					number.setText("");
-
-					r.setCount(1);
-					textScreen.append("========================================\n Reseting count to: 1" + 
+					textScreen.append("========================================\n DONE"  + 
 							"\n========================================\n");
+					//Adds "Renaming Old File to New File" into the textscreen
+					//					for(File f:r.getList()) {
+					//						textScreen.append("Renaming " + f.getName() + " to " + r.getNewName() + 
+					//								" " + count + " " + r.getExtension() + "\n");
+					//						count++;
+					//					}
+
+					//					newName.setText("");
+					//					number.setText("");
+					//
+					//					r.setCount(1);
+					//					textScreen.append("========================================\n Reseting count to: 1" + 
+					//							"\n========================================\n");
 
 				} 
 				//Stops running rename if a an exception occurs
